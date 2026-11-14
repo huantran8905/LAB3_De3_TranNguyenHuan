@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giám sát báo cháy | Lab 3</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+<header>
+  <div><p class="eyebrow">LAB 3 · ĐỀ 3</p><h1>Giám sát báo cháy</h1></div>
+  <span id="connection" class="badge" role="status">Chưa kết nối</span>
+</header>
+<form id="config" class="config panel">
+  <label for="room">Topic gốc MQTT</label>
+  <div class="controls">
+    <input id="room" value="lab3/de3/nhom17-4f92bc" required pattern="[A-Za-z0-9_\/\-]+" maxlength="80" spellcheck="false">
+    <button id="connect" class="primary" type="submit">Kết nối MQTT</button>
+  </div>
+  <p id="notice" class="status" role="status"></p>
+</form>
+<section class="grid" aria-label="Dữ liệu cảm biến">
+  <article class="sensor-card panel">
+    <div class="row"><h2>Nồng độ gas</h2><small id="gas-alert">—</small></div>
+    <p class="value"><span id="gas-value">—</span><span class="unit">%</span></p>
+    <p class="meta" id="gas-detail">Mức tương đối từ ADC của MQ-2</p>
+    <canvas id="gas-chart" aria-label="Biểu đồ mức gas tương đối theo thời gian" role="img"></canvas>
+  </article>
+  <article class="sensor-card panel">
+    <div class="row"><h2>Nhiệt độ</h2><small id="heat-alert">—</small></div>
+    <p class="value"><span id="temp-value">—</span><span class="unit">°C</span></p>
+    <p class="meta" id="temp-detail">Cảm biến DHT22</p>
+    <canvas id="temp-chart" aria-label="Biểu đồ nhiệt độ theo thời gian" role="img"></canvas>
+  </article>
+</section>
+<section class="panel" aria-label="Điều khiển thiết bị">
+  <div class="row">
+    <h2>Điều khiển thiết bị</h2>
+    <select id="mode" aria-label="Chế độ điều khiển" disabled>
+      <option value="">Chờ ESP32</option><option value="AUTO">AUTO</option><option value="MANUAL">MANUAL</option>
+    </select>
+  </div>
+  <div class="equipment"><span>Máy bơm · <strong id="pump-state">—</strong></span><button id="pump" type="button" disabled>Bật bơm</button></div>
+  <div class="equipment"><span>Quạt · <strong id="fan-state">—</strong></span><button id="fan" type="button" disabled>Bật quạt</button></div>
+  <p class="status" id="command-status" role="status">Chọn MANUAL để điều khiển. Cảnh báo tự động luôn được ưu tiên.</p>
+</section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/mqtt@5.10.4/dist/mqtt.min.js"></script>
+<script src="mqtt-wire.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+{
+  "version": 1,
+  "author": "Lab 3 - De 3",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 8,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gas-sensor",
+      "id": "mq2",
+      "top": 22,
+      "left": -225,
+      "attrs": {
+        "ppm": "400"
+      }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht",
+      "top": 32,
+      "left": 172,
+      "attrs": {
+        "temperature": "28",
+        "humidity": "50"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "pump",
+      "top": 111,
+      "left": -200,
+      "attrs": {
+        "color": "blue",
+        "label": "BOM"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "fan",
+      "top": 200,
+      "left": -200,
+      "attrs": {
+        "color": "red",
+        "label": "QUAT"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rp",
+      "top": 142,
+      "left": -141,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rf",
+      "top": 231,
+      "left": -141,
+      "attrs": {
+        "value": "220"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:VIN",
+      "mq2:VCC",
+      "red",
+      [
+        "h-65",
+        "v-98.31",
+        "h-28"
+      ]
+    ],
+    [
+      "esp:GND.2",
+      "mq2:GND",
+      "black",
+      [
+        "h-55",
+        "v-98.5",
+        "h-38"
+      ]
+    ],
+    [
+      "mq2:AOUT",
+      "esp:D34",
+      "orange",
+      [
+        "h66",
+        "v22.59",
+        "h27"
+      ]
+    ],
+    [
+      "esp:3V3",
+      "dht:VCC",
+      "red",
+      [
+        "h85.7",
+        "v-19.61"
+      ]
+    ],
+    [
+      "esp:GND.1",
+      "dht:GND",
+      "black",
+      [
+        "h114.5",
+        "v-10.11"
+      ]
+    ],
+    [
+      "dht:SDA",
+      "esp:D32",
+      "green",
+      [
+        "v75.11",
+        "h-212.5",
+        "v-141.81",
+        "h21"
+      ]
+    ],
+    [
+      "esp:D26",
+      "rp:2",
+      "blue",
+      [
+        "h-40",
+        "v38.64",
+        "h-47.19"
+      ]
+    ],
+    [
+      "rp:1",
+      "pump:A",
+      "blue",
+      [
+        "h-34",
+        "v5.36"
+      ]
+    ],
+    [
+      "pump:C",
+      "esp:GND.2",
+      "black",
+      [
+        "v41",
+        "h157",
+        "v-37",
+        "h33"
+      ]
+    ],
+    [
+      "esp:D27",
+      "rf:2",
+      "red",
+      [
+        "h-45",
+        "v117.84",
+        "h-42.19"
+      ]
+    ],
+    [
+      "rf:1",
+      "fan:A",
+      "red",
+      [
+        "h-34",
+        "v5.36"
+      ]
+    ],
+    [
+      "fan:C",
+      "esp:GND.2",
+      "black",
+      [
+        "v17",
+        "h157",
+        "v-102",
+        "h33"
+      ]
+    ]
+  ],
+  "dependencies": {}
+}
